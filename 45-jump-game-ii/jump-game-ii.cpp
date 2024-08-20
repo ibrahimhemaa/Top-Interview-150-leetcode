@@ -1,11 +1,8 @@
 class Solution {
 public:
-    int N=1e4+10;
-    int *dp=new int[N];
-    int n=0;
-    int jump(vector<int>& nums) {
-        
-        n=nums.size();
+    int jump(vector<int>& nums) { 
+        int n=nums.size();
+        int dp[n+7];
         for(int i=0;i<n+5;i++){
             dp[i]=-1;
         }
