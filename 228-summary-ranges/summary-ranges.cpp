@@ -2,28 +2,22 @@ class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {
         vector<string>ans;
-        string s;
-        if(nums.size())
-            s+=to_string(nums[0]);
-        for(int i=1;i<nums.size();i++){
-            if(nums[i]!=nums[i-1]+1 || i+1==nums.size()){
-                if(i+1==nums.size() &&nums[i]==nums[i-1]+1 ){
-                    s+="->";
-                    s+=to_string(nums[i]);
-                    ans.push_back(s);
-                    s.clear();
-                    break;
-                }
-                else if(stoi(s)!=nums[i-1]){
-                    s+="->";
-                    s+=to_string(nums[i-1]);
-                    ans.push_back(s);
-                }
-                else ans.push_back(s);
-                s=to_string(nums[i]);
+        vector<pair<int,int>>v;
+        for(int i=0;i<nums.size();i++){
+            if(!v.size()||v.back().second+1!=nums[i]){
+                v.push_back({nums[i],nums[i]});
+            }
+            else{
+                v.back().second=nums[i];
             }
         }
-        if(s.size())ans.push_back(s);
-        return ans;
+        for(auto &[x,y]:v){
+            ans.push_back(to_string(x));
+            if(x!=y){
+                ans.back()+="->";
+                ans.back()+=to_string(y);
+            }
+        }return ans;
     }
+        
 };
