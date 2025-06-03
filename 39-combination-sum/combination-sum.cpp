@@ -1,7 +1,7 @@
 class Solution {
 public:
     set<vector<int>>ans;
-    void solve(vector<int>candidates,int target,int sum=0,vector<int>v={}){
+    void solve(vector<int>candidates,int target,int index=0,int sum=0,vector<int>v={}){
         if(sum>=target){
             if(sum==target){
                 sort(v.begin(),v.end());
@@ -10,10 +10,10 @@ public:
             }
             return;
         }
-        for(int i=0;i<candidates.size();i++){
+        for(int i=index;i<candidates.size();i++){
             if(candidates[i]<=target-sum){
                 v.push_back(candidates[i]);
-                solve(candidates,target,sum+candidates[i],v);
+                solve(candidates,target,i,sum+candidates[i],v);
                 v.pop_back();
             }
             else{
