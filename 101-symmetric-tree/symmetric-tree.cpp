@@ -12,11 +12,11 @@
 class Solution {
 public:
     bool balance(TreeNode *right,TreeNode *left){
-        if(right==nullptr &&left==nullptr)
+        if(right==nullptr &&left==nullptr)//baseCase of Tree
             return true;
-        if(left==nullptr||right==nullptr||left->val!=right->val)
+        if(left==nullptr||right==nullptr||left->val!=right->val)//case of any nodes in right subTree not equal left subTree
             return false;
-        return balance(right->left,left->right)&balance(right->right,left->left);        
+        return balance(right->left,left->right)&balance(right->right,left->left);         
     }
     bool isSymmetric(TreeNode* root) {
         if(root==nullptr)
