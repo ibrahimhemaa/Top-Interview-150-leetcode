@@ -15,10 +15,12 @@ think how to adapt this (may think divide and conquere) why i want get root from
 */
 class Solution {
 public:
+    unordered_map<int,int>map;
+    //get root o(1);
     TreeNode* build(vector<int>& preorder, vector<int>& inorder,int &RootIndex,int left,int right){
-        if(left>right) return nullptr;
-        int pivot=left;//find root
-        while(preorder[RootIndex]!=inorder[pivot])pivot++;
+        if(left>right)
+            return nullptr;
+        int pivot=map[preorder[RootIndex]]-1;//find root
         TreeNode * newNode=new TreeNode(inorder[pivot]);
         ++RootIndex;
         newNode->left=build(preorder,inorder,RootIndex,left,pivot-1);
@@ -27,6 +29,10 @@ public:
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int root=0;
+        for(int i=0;i<inorder.size();i++){
+            map[inorder[i]]=i+1;
+        }
      return build(preorder,inorder,root,0,preorder.size()-1);
+
     }
 };
