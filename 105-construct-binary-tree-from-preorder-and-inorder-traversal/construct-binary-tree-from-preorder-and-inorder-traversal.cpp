@@ -20,7 +20,7 @@ public:
     TreeNode* build(vector<int>& preorder, vector<int>& inorder,int &RootIndex,int left,int right){
         if(left>right)
             return nullptr;
-        int pivot=map[preorder[RootIndex]]-1;//find root
+        int pivot=map[preorder[RootIndex]];//find root
         TreeNode * newNode=new TreeNode(inorder[pivot]);
         ++RootIndex;
         newNode->left=build(preorder,inorder,RootIndex,left,pivot-1);
@@ -30,7 +30,7 @@ public:
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         int root=0;
         for(int i=0;i<inorder.size();i++){
-            map[inorder[i]]=i+1;
+            map[inorder[i]]=i;
         }
      return build(preorder,inorder,root,0,preorder.size()-1);
 
