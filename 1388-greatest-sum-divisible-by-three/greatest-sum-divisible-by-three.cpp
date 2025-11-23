@@ -7,7 +7,9 @@ public:
             if(sum%3==0)mx=max(mx,sum);
             return mx;
         }
+        
         int &ret=dp[ind];
+        // if(~ret)return ret;
         ret=max(solve(ind+1,sum+num[ind]),solve(ind+1,sum));
         return ret;
     }
