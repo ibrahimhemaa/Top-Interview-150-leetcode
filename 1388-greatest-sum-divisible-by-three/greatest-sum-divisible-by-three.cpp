@@ -8,12 +8,7 @@ public:
             return mx;
         }
         int &ret=dp[ind];
-        // if(~ret)return ret;
-        if(num[ind]%3==0){
-            ret=solve(ind+1,sum+num[ind]);
-        }
-        else 
-            ret=max(solve(ind+1,sum+num[ind]),solve(ind+1,sum));
+        ret=max(solve(ind+1,sum+num[ind]),solve(ind+1,sum));
         return ret;
     }
     int maxSumDivThree(vector<int>& nums) {
