@@ -37,8 +37,8 @@ public:
         if(rem2==0){
             if(mn2.size()>=3)rem2=3;   
         }
-        if(mn1.size()>=rem1+3)rem1+=3;
-        if(mn2.size()>=rem2+3)rem2+=3;
+        if(mn1.size()>=rem1+3 && rem1==1)rem1+=3;
+        if(mn2.size()>=rem2+3 && rem2==1)rem2+=3;
         while(mn1.size()>rem1)mn1.pop();
         while(mn2.size()>rem2)mn2.pop();
         while(mn1.size()){sum-=mn1.top();num.push_back(mn1.top());mn1.pop();}
