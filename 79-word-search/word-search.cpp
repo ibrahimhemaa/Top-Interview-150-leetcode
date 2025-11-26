@@ -1,21 +1,25 @@
 class Solution {
 public:
-    bool isvalid(int r,int c,int n,int m){
-        return r>=0 &&c>=0&&r<n&&c<m;
+    vector<vector<bool>> vis;
+    string s;
+    vector<vector<char>> boards;
+
+    bool isvalid(int r,int c,int n,int m,int idx){
+        return r>=0 &&c>=0&&r<n&&c<m  && !vis[r][c] &&boards[r][c] == s[idx] ;
     }
-    bool dfs(vector<vector<char>>& board, string& word, int idx,
-             int r, int c, vector<vector<bool>>& vis)
+    bool dfs(int idx,
+             int r, int c,int n,int m)
     {
-        if(idx == word.size()) return true;
-        if(!isvalid(r,c,board.size(),board[0].size())||vis[r][c]||board[r][c] != word[idx]) return false;
+        if(idx == s.size()) return true;
+        if(!isvalid(r,c,n,m,idx)) return false;
 
         vis[r][c] = true;
 
         bool found =
-            dfs(board, word, idx+1, r+1, c, vis) ||
-            dfs(board, word, idx+1, r-1, c, vis) ||
-            dfs(board, word, idx+1, r, c+1, vis) ||
-            dfs(board, word, idx+1, r, c-1, vis);
+            dfs(idx+1, r+1, c, n,m) ||
+            dfs( idx+1, r-1, c, n,m) ||
+            dfs( idx+1, r, c+1, n,m) ||
+            dfs( idx+1, r, c-1, n,m);
 
         vis[r][c] = false;
 
@@ -24,11 +28,12 @@ public:
 
     bool exist(vector<vector<char>>& board, string word) {
         int n = board.size(), m = board[0].size();
-        vector<vector<bool>> vis(n, vector<bool>(m,false));
-
+        s=word;
+        boards=board;
+        vis.resize(n, vector<bool>(m,false));
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
-                if(dfs(board, word, 0, i, j, vis))
+                if(dfs(0, i, j,n,m))
                     return true;
             }
         }
