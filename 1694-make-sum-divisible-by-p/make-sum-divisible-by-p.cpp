@@ -6,7 +6,7 @@ public:
         int n=nums.size();
         int ans=n;
         for(auto i:nums)suff+=i;
-        unordered_map<long long,int>mp;
+        unordered_map<int,int>mp;
         mp[0]=-1;
         for(int i=0;i<n;i++){
             prefsum+=nums[i];
