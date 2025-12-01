@@ -2,12 +2,10 @@ class Solution {
 public: 
     using ll=long long;
     long long maxRunTime(int n, vector<int>& batteries) {
-        sort(batteries.begin(),batteries.end());
         ll l=1,r=1e14;
         //may be my solution memories but this is best solution 
         while(l<=r){
             ll mid=(l+r)>>1;
-            int cnt=0;
             ll sum=0;
             for(ll i:batteries){
                 sum+=min(i,mid);
