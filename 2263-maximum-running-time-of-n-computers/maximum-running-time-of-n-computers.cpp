@@ -2,8 +2,7 @@ class Solution {
 public: 
     using ll=long long;
     long long maxRunTime(int n, vector<int>& batteries) {
-        ll l=1,r=1e14;
-        //may be my solution memories but this is best solution 
+        ll l=1,r=1e14; 
         while(l<=r){
             ll mid=(l+r)>>1;
             ll sum=0;
