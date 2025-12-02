@@ -14,12 +14,7 @@ public:
     int dfs(TreeNode* root){
         if(!root)return 0;
         int cnt=1;
-        if(root->right){
-            cnt+=dfs(root->right);
-        }
-        if(root->left){
-            cnt+=dfs(root->left);
-        }
+       cnt+=dfs(root->right)+dfs(root->left);
         return cnt;
     }
     int countNodes(TreeNode* root) {
