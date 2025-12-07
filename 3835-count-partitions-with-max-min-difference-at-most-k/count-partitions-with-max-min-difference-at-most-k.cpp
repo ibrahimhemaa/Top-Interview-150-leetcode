@@ -2,11 +2,13 @@ class Solution {
 public:
     int countPartitions(vector<int>& nums, int k) {
        const int mod=1e9+7,n=nums.size();
-       int acc=1;
+       int acc=2;
        vector<int>dp(n+1,0);
-       dp[0]=1;
+       dp[0]=dp[1]=1;
        deque<int>mnq,mxq;
-       for(int l=0,r=0;r<n;++r){
+       mnq.push_back(0);
+       mxq.push_back(0);
+       for(int l=0,r=1;r<n;++r){
             while(mxq.size()&&nums[r]>nums[mxq.back()])
                 mxq.pop_back();
             mxq.push_back(r);
