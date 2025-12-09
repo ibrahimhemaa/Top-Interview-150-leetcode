@@ -14,11 +14,17 @@ public:
     vector<int> rightSideView(TreeNode* root) {
         vector<int>ans;
         if(!root)return {};
-        ans.push_back(root->val);
-        vector<int>r=rightSideView(root->right);
-        vector<int>l=rightSideView(root->left);
-        for(auto &i:r)ans.push_back(i);
-        for(int i=r.size();i<l.size();i++)ans.push_back(l[i]);
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int sz = q.size();
+            for (int i = 0; i < sz; i++) {
+                TreeNode* node = q.front(); q.pop();
+                if (i == sz - 1) ans.push_back(node->val); 
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+            }
+        }
         return ans;
     }
 };
