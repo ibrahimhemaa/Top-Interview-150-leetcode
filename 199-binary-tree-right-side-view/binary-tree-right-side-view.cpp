@@ -11,7 +11,6 @@
  */
 class Solution {
 public:
-    vector<int>ans;
     vector<int> rightSideView(TreeNode* root) {
         vector<int>ans;
         if(!root)return {};
