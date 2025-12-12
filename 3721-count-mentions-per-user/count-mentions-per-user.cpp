@@ -12,7 +12,6 @@ public:
         for(auto &ev:event){
             int time=ev.first.first;
             int index=ev.second;
-            cout<<time<<' '<<index<<'\n';
             if(events[index][0]=="OFFLINE"){
                 int userId=stoi(events[index][2]);
                 offlinetime[userId]=time+60;
@@ -38,9 +37,7 @@ public:
                          else ans[i]++;
                     }
                     else{
-                        
                         ans[i]+=users[i];
-                        cout<<ans[i]<<' '<<i<<'\n';
                     }
                 }
             }
