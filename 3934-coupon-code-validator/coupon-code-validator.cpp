@@ -3,9 +3,14 @@ public:
     vector<string> validateCoupons(vector<string>& code, vector<string>& businessLine, vector<bool>& isActive) {
         
         vector<pair<char,string>>category;
+        unordered_map<string,int>includebusinessLine;
+        includebusinessLine["electronics"]=1;
+        includebusinessLine["grocery"]=1;
+        includebusinessLine["pharmacy"]=1;
+        includebusinessLine["restaurant"]=1;
         int n=code.size();
         for(int i=0;i<n;i++){
-            if(!isActive[i]||(businessLine[i]!="electronics"&&businessLine[i]!="grocery"&&businessLine[i]!="pharmacy"&&businessLine[i]!="restaurant") )continue;
+            if(!isActive[i]||includebusinessLine.find(businessLine[i])==includebusinessLine.end() )continue;
             bool validword=1;
             validword&=(code[i].size()>0);
             for(int j=0;j<code[i].size();j++){
