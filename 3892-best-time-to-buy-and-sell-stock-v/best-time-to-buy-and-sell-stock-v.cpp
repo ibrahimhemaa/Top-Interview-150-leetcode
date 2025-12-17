@@ -4,7 +4,7 @@ public:
     ll N=1e18;
     vector<vector<vector<ll>>>maxprofit;
     ll solve(vector<int>& prices,int &n,int i,int k,int state){
-        if(k<0)return -N;
+        if(k==0)return 0;
         if(i==n)return (state?-N:0);
         ll &ret=maxprofit[i][k][state];
         if(ret!=-1)return ret;
