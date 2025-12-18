@@ -12,16 +12,9 @@ public:
                 pref[i][1]+=pref[i-1][1];
             }
         }
-        // k=2
-        // 5 14 16 9
-        // -5 -5 -5 -14
-        //  5 19 35 44 
-        // 14+-9=5
-
         ll ans=pref[n-1][0];
         for(int i=k-1;i<n;i++){
-            ll consecutive1=pref[n-1][0]-pref[i][0]+(i-k>-1?pref[i-k][0]:0)+pref[i][1]-pref[i-k/2][1];
-            ans=max(ans,consecutive1);
+            ans=max(ans,pref[n-1][0]-pref[i][0]+(i-k>-1?pref[i-k][0]:0)+pref[i][1]-pref[i-k/2][1]);
         }
         return ans;
     }
