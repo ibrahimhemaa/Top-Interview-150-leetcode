@@ -1,16 +1,21 @@
 class Solution {
 public:
-    vector<vector<int>>dp;
-    int solve(int i,int j,vector<vector<int>>& triangle){
-        if(i==triangle.size()||j==triangle[i].size())return 0;
-        int &ret=dp[i][j];
-        if(ret!=10000000)return ret;
-        ret=triangle[i][j]+min(solve(i+1,j,triangle),solve(i+1,j+1,triangle));
-        return ret;
-    }
+    
     int minimumTotal(vector<vector<int>>& triangle) {
         int n=triangle.size();
-        dp.resize(n,vector<int>(n,10000000));
-        return solve(0,0,triangle);
+        vector<vector<int>>dp(n,vector<int>(n,10000000));
+        dp[0][0]=triangle[0][0];
+        for(int i=1;i<n;i++){
+            for(int j=0;j<triangle[i].size();j++){
+                dp[i][j]=dp[i-1][j]+triangle[i][j];
+                if(j){
+                    dp[i][j]=min(dp[i-1][j-1]+triangle[i][j],dp[i][j]);
+                }
+            }
+            if(i==n-1){
+                for(int j=0;j<triangle[i].size();j++)dp[n-1][n-1]=min(dp[i][j],dp[n-1][n-1]);
+            }
+        }
+        return dp[n-1][n-1];
     }
 };
