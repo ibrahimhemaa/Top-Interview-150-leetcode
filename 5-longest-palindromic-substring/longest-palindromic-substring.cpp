@@ -6,7 +6,7 @@ public:
             Char_Index[s[i]-'a'].push_back(i);
         }
         int longpalindrome=1;//one char;
-        int mnl=0;
+        int start_index=0;
         for(int i=0;i<s.size();i++){
             int last_char=Char_Index[s[i]-'a'].back(),index=Char_Index[s[i]-'a'].size()-1;
             if(last_char-i+1<=longpalindrome)continue;
@@ -15,7 +15,7 @@ public:
                 while(l<=r && s[l]==s[r])++l,--r;
                 if(l>r){
                     longpalindrome=last_char-i+1;
-                    mnl=i;
+                    start_index=i;
                     break;
                 }
                 last_char=Char_Index[s[i]-'a'][index-1];
@@ -23,6 +23,6 @@ public:
                 --index;
             }
         }
-        return s.substr(mnl,longpalindrome);
+        return s.substr(start_index,longpalindrome);
     }
 };
