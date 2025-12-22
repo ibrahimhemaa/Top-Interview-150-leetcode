@@ -20,7 +20,7 @@ public:
     int minDeletionSize(vector<string>& strs) {
         int m=strs[0].size();
 
-        dp.resize(m+1,vector<int>(m+2,-1));
+        dp.resize(m,vector<int>(m,-1));
         valid.resize(m,vector<int>(m,0));
 
         for(int c=0;c<m;c++){
