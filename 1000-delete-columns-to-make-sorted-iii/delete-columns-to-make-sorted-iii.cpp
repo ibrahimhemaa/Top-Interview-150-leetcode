@@ -21,12 +21,12 @@ public:
         int m=strs[0].size();
 
         dp.resize(m+1,vector<int>(m+2,-1));
-        valid.resize(m+1,vector<int>(m+2,0));
+        valid.resize(m,vector<int>(m,0));
 
         for(int c=0;c<m;c++){
             for(int nexc=c+1;nexc<m;nexc++){
                 int validstep=1;
-                for(auto &word:strs)validstep&=(word[c]<=word[nexc]);
+                for(auto &word:strs)if(word[c]>word[nexc]){validstep=0;break;}
                 valid[nexc][c]=validstep;
             }
         }
