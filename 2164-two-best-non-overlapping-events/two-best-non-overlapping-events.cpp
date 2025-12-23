@@ -11,18 +11,16 @@ public:
         }
         for(int i=0;i<n;i++){
             int l=i+1,r=n-1;
-            int next=-1;
             while(l<=r){
                 int md=(l+r)>>1;
                 if(events[md][0]>events[i][1]){
                     r=md-1;
-                    next=md;
                 }
                 else{
                     l=md+1;
                 }
             }
-            if(~next) mx2event=max(mx2event,mxevent[next]+events[i][2]);
+            if(r+1!=n) mx2event=max(mx2event,mxevent[r+1]+events[i][2]);
             else mx2event=max(mx2event,events[i][2]);
         }
         return mx2event;
