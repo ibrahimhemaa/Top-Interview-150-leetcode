@@ -4,10 +4,10 @@ public:
         sort(events.begin(),events.end());
         int n=events.size();
         int mx2event=0;
-        vector<int>mxevevt(n,0);
+        vector<int>mxevent(n,0);
         for(int i=n-1;i>=0;i--){
-            mxevevt[i]=events[i][2];
-            if(i!=n-1)mxevevt[i]=max(mxevevt[i],mxevevt[i+1]);
+            mx2event=max(mx2event,events[i][2]);
+            mxevent[i]=mx2event;
         }
         for(int i=0;i<n;i++){
             int l=i+1,r=n-1;
@@ -22,9 +22,8 @@ public:
                     l=md+1;
                 }
             }
-            if(~next) mx2event=max(mx2event,mxevevt[next]+events[i][2]);
+            if(~next) mx2event=max(mx2event,mxevent[next]+events[i][2]);
             else mx2event=max(mx2event,events[i][2]);
-            cout<<r<<' '<<l<<'\n';
         }
         return mx2event;
     }
