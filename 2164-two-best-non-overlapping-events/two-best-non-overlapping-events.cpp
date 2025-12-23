@@ -4,7 +4,7 @@ public:
         sort(events.begin(),events.end());
         int n=events.size();
         int mx2event=0;
-        vector<int>mxevent(n,0);
+        vector<int>mxevent(n+1,0);
         for(int i=n-1;i>=0;i--){
             mx2event=max(mx2event,events[i][2]);
             mxevent[i]=mx2event;
@@ -20,8 +20,7 @@ public:
                     l=md+1;
                 }
             }
-            if(r+1!=n) mx2event=max(mx2event,mxevent[r+1]+events[i][2]);
-            else mx2event=max(mx2event,events[i][2]);
+            mx2event=max(mx2event,mxevent[r+1]+events[i][2]);
         }
         return mx2event;
     }
