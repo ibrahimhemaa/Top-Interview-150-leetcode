@@ -12,11 +12,12 @@ public:
         for(int i=0;i<n;i++){
             int l=i+1,r=n-1;
             while(l<=r){
-                if(events[(l+r)>>1][0]>events[i][1]){
-                    r=((l+r)>>1)-1;
+                int md=(l+r)>>1;
+                if(events[md][0]>events[i][1]){
+                    r=md-1;
                 }
                 else{
-                    l=((l+r)>>1)+1;
+                    l=md+1;
                 }
             }
             if(r+1!=n) mx2event=max(mx2event,mxevent[r+1]+events[i][2]);
