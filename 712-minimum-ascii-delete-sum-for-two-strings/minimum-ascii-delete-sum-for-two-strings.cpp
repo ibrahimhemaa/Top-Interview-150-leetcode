@@ -4,9 +4,9 @@ public:
     int sol(int i,int j,int &n,int &m,string &s1,string &s2){
         if(i>=n&&j>=m)return 0;
         if(i==n||j==m){
-            int ans=0;
-            while(i!=n)ans+=97+(s1[i++]-'a');
-            while(j!=m)ans+=97+(s2[j++]-'a');
+            int ans=((m-i+n-j)*97);
+            while(i!=n)ans+=(s1[i++]-'a');
+            while(j!=m)ans+=(s2[j++]-'a');
             return ans;
         }
         int &ret=mnsum[i][j];
