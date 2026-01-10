@@ -11,8 +11,7 @@ public:
         }
         int &ret=mnsum[i][j];
         if(~ret)return ret;
-        ret=1000000;
-        ret=min(ret,sol(i+1,j,n,m,s1,s2)+(97+(s1[i]-'a')));
+        ret=sol(i+1,j,n,m,s1,s2)+(97+(s1[i]-'a'));
         ret=min(ret,sol(i,j+1,n,m,s1,s2)+(97+(s2[j]-'a')));
         if(s1[i]==s2[j]){
             ret=min(ret,sol(i+1,j+1,n,m,s1,s2));
